@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Numerical Methods Calculator</title>
+</head>
+<body>
+
+<h1>Numerical Methods Calculator</h1>
+
+<form method="POST">
+
+    <h3>Select Method:</h3>
+    <input type="radio" name="method" value="newton" required> Newton-Raphson<br>
+    <input type="radio" name="method" value="interpolation"> Newton Forward Interpolation<br>
+    <input type="radio" name="method" value="euler"> Euler Method<br><br>
+
+    <h3>Newton-Raphson Inputs</h3>
+    Initial Guess (x0): <input type="text" name="x0"><br>
+    Tolerance: <input type="text" name="tolerance"><br>
+    Max Iterations: <input type="text" name="max_iter"><br><br>
+
+    <h3>Interpolation Inputs</h3>
+    x values (comma separated): <input type="text" name="x_values"><br>
+    y values (comma separated): <input type="text" name="y_values"><br>
+    Value to interpolate: <input type="text" name="value"><br><br>
+
+    <h3>Euler Method Inputs</h3>
+    Initial x: <input type="text" name="x0"><br>
+    Initial y: <input type="text" name="y0"><br>
+    Step size (h): <input type="text" name="h"><br>
+    Final x: <input type="text" name="xn"><br><br>
+
+    <button type="submit">Calculate</button>
+</form>
+
+<hr>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if steps %}
+<h3>Steps:</h3>
+<ul>
+    {% for step in steps %}
+    <li>{{ step }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if result %}
+<h3>Result:</h3>
+<p>{{ result }}</p>
+{% endif %}
+
+</body>
+</html>
